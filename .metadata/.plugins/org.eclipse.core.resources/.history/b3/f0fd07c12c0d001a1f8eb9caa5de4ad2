@@ -1,0 +1,11 @@
+
+public class Cartes {
+
+	//Atributos
+	String coll;
+	int numero;
+	
+	
+	
+
+}

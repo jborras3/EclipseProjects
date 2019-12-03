@@ -1,0 +1,21 @@
+import java.util.Scanner;
+import java.util.GregorianCalendar;
+
+public class ExFechas {
+	
+		public static void main(String[] arg) {
+		GregorianCalendar data = new GregorianCalendar();
+		int dia = (data.get(GregorianCalendar.DATE));
+		int mes = (data.get(GregorianCalendar.MONTH));
+		int any = (data.get(GregorianCalendar.YEAR));
+		System.out.println("Data actual: ");
+		System.out.println("");
+		System.out.println(dia+"/"+mes+"/"+any);
+		System.out.println(data.getTime());
+		System.out.println("");
+		}
+		
+	
+
+
+}
