@@ -2,62 +2,47 @@ import java.util.Scanner;
 
 public class MainCartes {
 	
-	
-	
 	public static void main(String[] args){
 		
-		String tipus = null;
-		int selector = 0;
+		new MainCartes().inici();
+
+	} 
+
+	public void inici(){
+		String tipus = "";
 		int num = 0;
+		int selector;
 		Scanner s = new Scanner(System.in);
 
-		System.out.print("Inserte el tipo que quiere:");
-		System.out.print("");
-		System.out.print("1. Oro ");
-		System.out.print("");
-		System.out.print("2. Copas ");
-		System.out.print("");
-		System.out.print("3. Espadas ");
-		System.out.print("");
-		System.out.print("4. Bastones ");
-		System.out.print("");
-			
+		System.out.println("Inserte el tipo que quiere:");
+		System.out.println("1.Oro, 2.Bastos, 3.Copas, 4.Espadas");
+
 		selector = s.nextInt();
 
-		if(selector == 1) {
-			
-			tipus = "Oro";
-			
+		switch(selector){
+			case 1: tipus = "Oro";
+			case 2: tipus = "Bastos";
+			case 3: tipus = "Copas";
+			case 4: tipus = "Espadas";
 		}
-		if(selector == 2) {
-			
-			tipus = "Copas";
-			
-		}
-		if(selector == 3) {
-					
-			tipus = "Espadas";
-					
-		}
-		if(selector == 4) {
-			
-			tipus = "Bastones";
-			
-		}
-		
-		System.out.print(tipus);
 		
 		while(num > 12 || num < 1) {
-		System.out.print("");
-		System.out.print("Inserte un numero entre el 1 y el 12 (ambos incluidos) ");
-		num =  s.nextInt();
+		System.out.println("Inserte un numero entre el 1 y el 12 (ambos incluidos) ");
+		num = s.nextInt(); //demenar bum de carta
 		}
+	
+		Cartes c1 = new Cartes(tipus, num); //contruir carta
 		
-		System.out.print("");
-		System.out.print(num);
-		
-		
+		System.out.print(c1.getNumero());
 
+		System.out.print(" - ");
+		//print carta
+		System.out.println(c1.getTipus());
+		//print baralla
+		Baraja b = new Baraja();
+
+		b.mostrarBaraja();
+		  
+		s.close();
 	}
-
 }

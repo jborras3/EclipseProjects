@@ -1,6 +1,0 @@
-
-public class Cuenta {
-	
-	String nombre;	
-	String numCuenta;
-}

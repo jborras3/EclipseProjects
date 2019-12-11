@@ -6,23 +6,19 @@ public class Cartes {
 	int numero;
 	
 	public Cartes(String tipus, int num) {
-		
 		coll = tipus;
 		numero = num;
-		
 	}
 	
-	public String getTipus(String tipus) {
-		
-		return tipus;
-		
+	public String getTipus() {
+		return coll;
 	}
 	
-	public int getNumero(int numero) {
+	public int getNumero() {
 		return numero;
 	}
-	
-	
-	
 
+	public void mostraC(){
+		System.out.println(numero + " de " + coll);
+	}
 }
