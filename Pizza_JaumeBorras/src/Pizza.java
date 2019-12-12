@@ -7,12 +7,15 @@ public class Pizza {
 	String estatPizza;
 	String tamanyPizza;
 	
+	
 	//constructor
 	
 	public Pizza(String tipus, String tamany) {
 		tipusPizza = tipus;
 		tamanyPizza = tamany;
 		estatPizza = "demanada";
+		countDemenades++;
+		
 	}
 	
 	//get's
@@ -33,19 +36,24 @@ public class Pizza {
 		
 	}
 	
-	public int getServides(int countServides) {
+	public int getServides() {
 		return countServides;
 	}
 	
-	public int getDemenades(int countDemenades) {
+	public int getDemenades() {
 		return countDemenades;
 	}
 	
 	//cambiar estado
 	
 	public void Servir() {
-		this.estatPizza = "servida";	
+		 System.out.println("Aquesta pizza se ha servit");
 	}
 	
+	//toString
+	
+	public String toString(){
+		return "pizza "+tipusPizza+" "+tamanyPizza+" demenada";
+	}
 	
 }

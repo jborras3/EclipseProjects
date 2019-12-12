@@ -61,7 +61,14 @@ public class MainPizza {
 			
 			count++;
 		}
+		pizza[1].Servir();
+		System.out.println(pizza[0].toString());
+		System.out.println(pizza[1].toString());
+		System.out.println(pizza[2].toString());
+		pizza[1].Servir();
+		System.out.println("Servides: " + pizza[0].getServides());
 		
+		System.out.println("Demenades: "+pizza[2].getDemenades());
 	}
 
 }
