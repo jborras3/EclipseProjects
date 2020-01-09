@@ -3,18 +3,11 @@ public class MainMagatzem {
 
 	public static void main(String[] args) {
 		
-		static int selector = 0;
+		int selector = 0;
+		
 		Scanner s = new Scanner(System.in);
 		
-		System.out.println("'Menu': eligeix una opcio:");
-		System.out.println("");
-		System.out.println("1. Llistat");
-		System.out.println("2. Alta");
-		System.out.println("3. Baixa");
-		System.out.println("4. Modificació");
-		System.out.println("5. Entrada de mercaderia");
-		System.out.println("6. Sortida de mercaderia");
-		System.out.println("7. Sortir");
+		menu();
 		
 		selector = s.nextInt();
 		
@@ -38,6 +31,18 @@ public class MainMagatzem {
 				break;
 		}
 		
+	}
+	
+	private static void menu() {
+		System.out.println("'Menu': eligeix una opcio:");
+		System.out.println("");
+		System.out.println("1. Llistat");
+		System.out.println("2. Alta");
+		System.out.println("3. Baixa");
+		System.out.println("4. Modificació");
+		System.out.println("5. Entrada de mercaderia");
+		System.out.println("6. Sortida de mercaderia");
+		System.out.println("7. Sortir");
 	}
 
 }

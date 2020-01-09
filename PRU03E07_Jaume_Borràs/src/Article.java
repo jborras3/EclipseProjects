@@ -1,16 +1,27 @@
-
+import java.util.*;
 public class Article {
-	private String codi = "0000";
-	private String descripcio;
-	private double preuDeCompra;
-	private double preuDeVenda;
-	private int stock;
+	private static int codi = 0;
+	private static String descripcio;
+	private static double preuDeCompra;
+	private static double preuDeVenda;
+	private static int stock;
+	private static Article[] article = new Article[100];
+	static Scanner s = new Scanner(System.in);
+	private static int countOb = 0;
 	
-	public String getCodi() {
+	public Article(int codi, String descripcio, double preuDeCompra, double preuDeVenda, int stock) {
+		codi = codi;
+		descripcio = descripcio;
+		preuDeCompra = preuDeCompra;
+		preuDeVenda = preuDeVenda;
+		stock = stock;
+	}
+	
+	public int getCodi() {
 		return codi;
 	}
 	
-	public void setCodi(String codi) {
+	public void setCodi(int codi) {
 		this.codi =codi ;
 	}
 	
@@ -55,5 +66,22 @@ public class Article {
 		cadena+="\nStock: "+ this.stock;
 		cadena+="\n---------------------------------------";
 		return cadena;
+	}
+	
+	public static void altaArt() {
+		System.out.println("Opció alta de mercancía.");
+		System.out.println("Inserti codi del article.");
+		codi = s.nextInt();
+		System.out.println("Inserti la descripcio del article.");
+		descripcio = s.next();
+		System.out.println("Inserti el preu de compra del article. (Amb decimals)");
+		preuDeCompra = s.nextDouble();
+		System.out.println("Inserti el preu de venta del article. (Amb decimals)");
+		preuDeVenda = s.nextDouble();
+		System.out.println("Inserti el stock inicial del article. (Amb decimals)");
+		stock = s.nextInt();
+		Article n = new Article(codi, descripcio, preuDeCompra, preuDeVenda, stock);
+		article[countOb] = n;
+		System.out.println("Se ha introduït el article num: "+countOb+" a la llista. Les dades son les seguents: \nCodi: "+ codi+" ");
 	}
 }
