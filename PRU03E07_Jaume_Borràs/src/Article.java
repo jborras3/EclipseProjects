@@ -73,15 +73,24 @@ public class Article {
 		System.out.println("Inserti codi del article.");
 		codi = s.nextInt();
 		System.out.println("Inserti la descripcio del article.");
-		descripcio = s.next();
+		descripcio = s.nextLine();
 		System.out.println("Inserti el preu de compra del article. (Amb decimals)");
 		preuDeCompra = s.nextDouble();
 		System.out.println("Inserti el preu de venta del article. (Amb decimals)");
 		preuDeVenda = s.nextDouble();
-		System.out.println("Inserti el stock inicial del article. (Amb decimals)");
+		System.out.println("Inserti el stock inicial del article.");
 		stock = s.nextInt();
 		Article n = new Article(codi, descripcio, preuDeCompra, preuDeVenda, stock);
 		article[countOb] = n;
 		System.out.println("Se ha introduït el article num: "+countOb+" a la llista. Les dades son les seguents: \nCodi: "+ codi+" ");
+		countOb++;
+	}
+	
+	public static void listaArt() {
+		
+		for(int i = 0; i == countOb; i++){
+			article[i].toString();
+		}
+		
 	}
 }

@@ -7,30 +7,34 @@ public class MainMagatzem {
 		
 		Scanner s = new Scanner(System.in);
 		
-		menu();
-		
-		selector = s.nextInt();
-		
-		switch (selector) {
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
-				break;
-			case 7:
-				break;
+		do{
 			
-			default:
-				break;
-		}
+			menu();
+			
+			selector = s.nextInt();
+			
+			switch (selector) {
+				case 1:
+					Article.listaArt();
+					break;
+				case 2:
+					Article.altaArt();
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+				default:
+					selector = 7;
+					break;
+			}
+		} while(selector != 7);
 		
+		System.out.println("Heu sortit del programa");
 	}
 	
 	private static void menu() {
