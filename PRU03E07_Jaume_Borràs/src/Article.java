@@ -1,20 +1,18 @@
-import java.util.*;
 public class Article {
-	private static int codi = 0;
-	private static String descripcio;
-	private static double preuDeCompra;
-	private static double preuDeVenda;
-	private static int stock;
-	private static Article[] article = new Article[100];
-	static Scanner s = new Scanner(System.in);
-	private static int countOb = 0;
+	private int codi;
+	private String descripcio;
+	private double preuDeCompra;
+	private double preuDeVenda;
+	private int stock;
+
+	public Article(){}
 	
 	public Article(int codi, String descripcio, double preuDeCompra, double preuDeVenda, int stock) {
-		codi = codi;
-		descripcio = descripcio;
-		preuDeCompra = preuDeCompra;
-		preuDeVenda = preuDeVenda;
-		stock = stock;
+		this.codi = codi;
+		this.descripcio = descripcio;
+		this.preuDeCompra = preuDeCompra;
+		this.preuDeVenda = preuDeVenda;
+		this.stock = stock;
 	}
 	
 	public int getCodi() {
@@ -57,7 +55,7 @@ public class Article {
 		this.stock = stock;
 	}
 	
-	public String toString() {
+	public void imprimir() {
 		String cadena = "-----------------------------------";
 		cadena+="\nCodi: " + this.codi;
 		cadena+="\nDescripcio: "+ this.descripcio;
@@ -65,32 +63,7 @@ public class Article {
 		cadena+="\nPreu de venda: "+ this.preuDeVenda;
 		cadena+="\nStock: "+ this.stock;
 		cadena+="\n---------------------------------------";
-		return cadena;
-	}
-	
-	public static void altaArt() {
-		System.out.println("Opció alta de mercancía.");
-		System.out.println("Inserti codi del article.");
-		codi = s.nextInt();
-		System.out.println("Inserti la descripcio del article.");
-		descripcio = s.nextLine();
-		System.out.println("Inserti el preu de compra del article. (Amb decimals)");
-		preuDeCompra = s.nextDouble();
-		System.out.println("Inserti el preu de venta del article. (Amb decimals)");
-		preuDeVenda = s.nextDouble();
-		System.out.println("Inserti el stock inicial del article.");
-		stock = s.nextInt();
-		Article n = new Article(codi, descripcio, preuDeCompra, preuDeVenda, stock);
-		article[countOb] = n;
-		System.out.println("Se ha introduït el article num: "+countOb+" a la llista. Les dades son les seguents: \nCodi: "+ codi+" ");
-		countOb++;
-	}
-	
-	public static void listaArt() {
-		
-		for(int i = 0; i == countOb; i++){
-			article[i].toString();
-		}
-		
+		cadena+="\n";
+		System.out.print(cadena);
 	}
 }
