@@ -1,6 +1,6 @@
-
+package pru03.E02;
 import java.util.Random;
-public class PRU03E02Cotxe_Jaume_Borràs extends CotxeAbstracte implements InterfaceCotxe{
+public class PRU03E02Cotxe_Jaume_Borràs extends CotxeAbstracte{
 
     private EstatsMotorCotxe estat;
     static Random aleatori = new Random(); //cream objecte de aleatori per fer les revolucions

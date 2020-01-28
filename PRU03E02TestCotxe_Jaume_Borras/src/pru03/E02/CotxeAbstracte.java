@@ -1,4 +1,4 @@
-
+package pru03.E02;
 public abstract class CotxeAbstracte implements InterfaceCotxe {
 	
 	protected String marca;

@@ -2,6 +2,11 @@
  * @author xavier
  *
  */
+
+
+package pru03.E02;
+
+
 public interface InterfaceCotxe {
 	/**
 	 * El metode arrancarMotor llançara una excepcio si s'intenta
