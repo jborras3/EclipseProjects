@@ -2,7 +2,7 @@ package pru03.E02;
 import java.util.Random;
 public class PRU03E02Cotxe_Jaume_Borràs extends CotxeAbstracte{
 
-    private EstatsMotorCotxe estat;
+    protected EstatsMotorCotxe estat;
     static Random aleatori = new Random(); //cream objecte de aleatori per fer les revolucions
 
 	public PRU03E02Cotxe_Jaume_Borràs(String marca, String model, TipusCanvi tipuscanvi) {
@@ -43,7 +43,7 @@ public class PRU03E02Cotxe_Jaume_Borràs extends CotxeAbstracte{
 	public void aturarMotor() throws Exception { //cambia el estat del motor EnMarxa a Aturat
 		if(this.estat == EstatsMotorCotxe.EnMarxa) {
 			this.estat = EstatsMotorCotxe.Aturat;
-	        System.out.println("El cotxe se ha engegat i ara està "+EstatsMotorCotxe.Aturat+".");
+	        System.out.println("El cotxe se ha aturat i ara està "+EstatsMotorCotxe.Aturat+".");
 		}else {
 			throw new Exception ("El motor ja està "+this.estat+"."); //en cas de estar aturat llança la excepcio
 		}
