@@ -277,22 +277,15 @@ public class PRU03E03_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 			}
 		}
 
-
-	/*Metodes heredats*/
-	
-	@Override
-	public void aturarMotor() throws Exception { //cambia el estat del motor EnMarxa a Aturat
-		if(this.estat.equals(EstatsMotorCotxe.EnMarxa)) {
-			this.estat = EstatsMotorCotxe.Aturat;
-	        System.out.println("El cotxe se ha aturat i ara està "+EstatsMotorCotxe.Aturat+".");
-		}else {
-			throw new Exception ("El motor ja està "+this.estat+"."); //en cas de estar aturat llança la excepcio
+	/*ComprovadorMarcha*/
+		
+		public void getMarxa() {
+			if(this.tipuscanvi.equals(TipusCanvi.CanviManual)){ //eligeix quina variable utilitzar segons el tipus de canvi
+				System.out.println("Estàs en la marxa "+this.marxaManual); //manual
+			}else{ 
+				System.out.println("Estàs en la marxa "+this.marxaAuto); //automatic
+			}
 		}
-
-		marxaManual = MarxesManual_Jaume_Borras.N; //al aturar el motor es posa la N automaticament (sino es perillos)
-		marxaAuto = MarxesAuto_Jaume_Borras.N;
-	}
-
 	
 	/*Metodes privats*/	
 

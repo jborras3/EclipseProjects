@@ -128,8 +128,11 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 								System.out.println(canviarMarxaN.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
 							}
 							break;
-					
 					case 6:
+						c2.getMarxa();//obtenim la marxa
+						break;
+					
+					case 7:
 							try {
 								c2.marxaEnrera();
 							}catch (Exception enreraMarxaN) {
@@ -138,7 +141,7 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 							break;
 				
 
-					case 7:
+					case 8:
 							try {
 								c2.posarMarxaN();
 							}catch (Exception posarMarxaN) {
@@ -147,12 +150,12 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 							break;
 							
 					default: 
-							selectorMenuManual = 8;
+							selectorMenuManual = 9;
 							break;
 					
 				}
 
-			}while(selectorMenuManual != 8);
+			}while(selectorMenuManual != 9);
 			
 			
 		}else { //menu del cotxe automatic
@@ -188,8 +191,12 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 				case 4:
 						System.out.println(c2.getRevolucions());//obtenim revelucions (en aquest cas 0)
 						break;
-
+						
 				case 5:
+					c2.getMarxa();//obtenim la marxa
+					break;
+
+				case 6:
 						System.out.print("Vols pujar [+] o baixar [-] de marxa?");
 						masOmenos = s.next().charAt(0);
 						System.out.println("");
@@ -201,11 +208,11 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 						break;
 					
 				default: 
-					selectorMenuAuto = 6;
+					selectorMenuAuto = 7;
 					break;
 				}
 				
-			}while(selectorMenuAuto != 6);
+			}while(selectorMenuAuto != 7);
 			
 		}
 		
@@ -219,9 +226,10 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 		System.out.println("[1] Arrancar	   [2] Aturar");
 		System.out.println("[3] Comprovar estat del motor");
 		System.out.println("[4] Comprovar revolucions");
-		System.out.println("[5] Canviar marxa");
-		System.out.println("[6] Marxa enrera   [7] Marxa neutre");
-		System.out.println("[8] Sortir programa");
+		System.out.println("[5] Comprovar marxa");
+		System.out.println("[6] Canviar marxa");
+		System.out.println("[7] Marxa enrera   [8] Marxa neutre");
+		System.out.println("[9] Sortir programa");
 	}
 	
 	private static void MenuAutomatic() {
@@ -229,8 +237,9 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 		System.out.println("[1] Arrancar	   [2] Aturar");
 		System.out.println("[3] Comprovar estat del motor");
 		System.out.println("[4] Comprovar revolucions");
-		System.out.println("[5] Canvi de marxa");
-		System.out.println("[6] Sortir programa");
+		System.out.println("[5] Comprovar marxa");
+		System.out.println("[6] Canvi de marxa");
+		System.out.println("[7] Sortir programa");
 	}
 
 }
