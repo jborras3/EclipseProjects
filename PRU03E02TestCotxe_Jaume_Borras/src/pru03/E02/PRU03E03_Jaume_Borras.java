@@ -272,7 +272,7 @@ public class PRU03E03_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 		public void bajarNtoR(char masOmenos) {
 			if(marxaAuto.equals(MarxesAuto_Jaume_Borras.N) && masOmenos == '-') { //coloca la marxa de N a R
 				marxaAuto = MarxesAuto_Jaume_Borras.R;
-				System.out.println("Se ha colocat la marxa Enrera");
+				System.out.println("Se ha colocat la marxa R");
 			
 			}
 		}

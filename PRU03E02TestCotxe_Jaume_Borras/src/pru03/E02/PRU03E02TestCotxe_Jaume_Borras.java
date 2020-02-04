@@ -89,7 +89,12 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 			do{
 				System.out.println("");
 				MenuManual();
-				selectorMenuManual = s.nextInt();
+				try {                                   //comprova si es un numero o no
+					selectorMenuManual = s.nextInt();
+				}catch(Exception nonNumero) {
+					System.out.println("Caracter no aceptat");
+					selectorMenuManual = 9;
+				}
 				System.out.println("");
 
 				switch(selectorMenuManual){
@@ -119,9 +124,9 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 
 					case 5:
 						
-						System.out.print("Vols pujar [+] o baixar [-] de marxa?");
-						masOmenos = s.next().charAt(0);
-						System.out.println("");
+							System.out.print("Vols pujar [+] o baixar [-] de marxa?");
+							masOmenos = s.next().charAt(0);
+							System.out.println("");
 							try {
 								c2.canviarMarxaManual(masOmenos); //puja la marxa del cotxe
 							}catch (Exception canviarMarxaN) {
@@ -164,7 +169,12 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 				
 				System.out.println(" ");
 				MenuAutomatic();
-				selectorMenuAuto = s.nextInt();
+				try {                                   //comprova si es un numero o no
+					selectorMenuAuto = s.nextInt();
+				}catch(Exception nonNumero) {
+					System.out.println("Caracter no aceptat");
+					selectorMenuAuto = 7;
+				}
 				System.out.println(" ");
 				
 				switch(selectorMenuAuto){
