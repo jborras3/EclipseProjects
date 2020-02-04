@@ -1,39 +1,44 @@
 package pru03.E02;
 
-public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
+public class PRU03E03_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 
 	private MarxesAuto_Jaume_Borras marxaAuto;
 	private MarxesManual_Jaume_Borras marxaManual;
-	private MarxesManual_Jaume_Borras marxaInternaAuto;
-
 	
-	public CanviMarxa_Jaume_Borras(String marca, String model, TipusCanvi tipuscanvi) { //constructorde la clase
+	public PRU03E03_Jaume_Borras(String marca, String model, TipusCanvi tipuscanvi) { //constructorde la clase
 		super(marca, model, tipuscanvi);
 
-		if(this.tipuscanvi == TipusCanvi.CanviManual){ //eligeix quina variable utilitzar segons el tipus de canvi
-			tornaManual(); //manual
+		if(this.tipuscanvi.equals(TipusCanvi.CanviManual)){ //eligeix quina variable utilitzar segons el tipus de canvi
+			this.marxaManual = MarxesManual_Jaume_Borras.N; //manual
 		}else{ 
-			tornaAuto(); //automatic
+			this.marxaAuto = MarxesAuto_Jaume_Borras.N; //automatic
 		}//no tenc capacitat de fer un metode per tonar 2 tipus diferents
 
 		this.estat = EstatsMotorCotxe.Aturat; //Cull l'atribut per defecte del enum
+	}
+	
+	
+	public TipusCanvi getTipusMarcha() {
+		
+		return this.tipuscanvi;
+		
 	}
 
 	/*Metodes per els canvis de marches manuals*/
 
 	
-	public void canviarMarxaManual(char x) throws Exception {
+	public void canviarMarxaManual(char masOmenos) throws Exception {
 		
-		if(x != '+' && x != '-') { //si no es el char que correspon envia un error
+		if(masOmenos != '+' && masOmenos != '-') { //si no es el char que correspon envia un error
 			throw new Exception ("Selecona be la acció per favor");
 		}
 		
-		if(x == '+') {
+		if(masOmenos == '+') {
 			
-			if(this.marxaManual == MarxesManual_Jaume_Borras.R){ //Si esta en R primer posar marxa N
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.R)){ //Si esta en R primer posar marxa N
 				throw new Exception ("Per pujar a Primera previament has de colocar la Neutre");
 			}
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Sexta){//no es pot pujar més de la sexta
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Sexta)){//no es pot pujar més de la sexta
 				throw new Exception ("No pots pujar més de la Sisena");
 			}
 			if( true != comprovadorEstatMotor()){//si está apagat no pot pujar de marcha
@@ -43,12 +48,12 @@ public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 				
 		}
 		
-		if(x == '-') {
+		if(masOmenos == '-') {
 
-			if(this.marxaManual == MarxesManual_Jaume_Borras.R){ //Si esta en R no pots baixar de marxa
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.R)){ //Si esta en R no pots baixar de marxa
 				throw new Exception ("Si esta en la marxa R no pots baixar de marxa");
 			}
-			if(this.marxaManual == MarxesManual_Jaume_Borras.N){ //no es pot baixar més de la neutre
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.N)){ //no es pot baixar més de la neutre
 				throw new Exception ("No pots baixar més de la Neutre");
 			}
 			if( true != comprovadorEstatMotor()){ //si está apagat no pot pujar de marcha
@@ -79,41 +84,41 @@ public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 	//Les marxes no estàn enumerades al estat inicial, sino a la que puja
 
 		private void pujarMarxa1() { //puja a la marxa 1
-			if(this.marxaManual == MarxesManual_Jaume_Borras.N && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.N) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Primera;
 				System.out.println("Se a posat la Primera marxa");
 			}
 		}
 
 		private void pujarMarxa2() { //puja a la marxa 2
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Primera && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Primera) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Segona;
 				System.out.println("Se a posat la Segona marxa");
 			}
 		}
 		private void pujarMarxa3() { //puja a la marxa 3
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Segona && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Segona) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Tercera;
 				System.out.println("Se a posat la Tercera marxa");
 			}
 		}
 
 		private void pujarMarxa4() { //puja a la marxa 4
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Tercera && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Tercera) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Quarta;
 				System.out.println("Se a posat la Quarta marxa");
 			}
 		}
 
 		private void pujarMarxa5() {
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Quarta && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Quarta) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Quinta;
 				System.out.println("Se a posat la Quinta marxa");
 			}
 		}
 
 		private void pujarMarxa6() {
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Quinta && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Quinta) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Sexta;
 				System.out.println("Se a posat la Sexta marxa");
 			}
@@ -137,49 +142,49 @@ public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 	//Els metodes de baixar marxa estàn enumeras a la marxa que baixes, no a la que estàs
 
 		private void baixaMarxa1() { //baixa a la primera marxa
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Segona && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Segona) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Primera;
 				System.out.println("Se a posat la Primera marxa");
 			}
 		}
 		private void baixaMarxa2() { //baixa a la segona marxa
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Tercera && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Tercera) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Segona;
 				System.out.println("Se a posat la Segona marxa");
 			}
 		}
 
 		private void baixaMarxa3() { //baixa a la tercera marxa
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Quarta && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Quarta) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Tercera;
 				System.out.println("Se a posat la Tercera marxa");
 			}
 		}
 
 		private void baixaMarxa4() { //baixa a la quarta marxa
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Quinta && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Quinta) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Quarta;
 				System.out.println("Se a posat la Quarta marxa");
 			}
 		}
 
 		private void baixaMarxa5() { //baixa a la cinquena marxa
-			if(this.marxaManual == MarxesManual_Jaume_Borras.Sexta && comprovadorEstatMotor() ){
+			if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Sexta) && comprovadorEstatMotor() ){
 				marxaManual = MarxesManual_Jaume_Borras.Quinta;
 				System.out.println("Se a posat la Quinta marxa");
 			}
 		}
 	
 	public void posarMarxaN() throws Exception { //posa la marxa N
-		if(this.marxaManual == MarxesManual_Jaume_Borras.N) { //si ja està en la marxa N llança la excepció
+		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.N)) { //si ja està en la marxa N llança la excepció
 			throw new Exception("Ja estàs en la marxa neutre");
 		}
 		
-		if(this.marxaManual == MarxesManual_Jaume_Borras.Primera && comprovadorEstatMotor() ){ //si està en primera posa la marxa neutre
+		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.Primera) && comprovadorEstatMotor() ){ //si està en primera posa la marxa neutre
 			marxaManual = MarxesManual_Jaume_Borras.N;
 			System.out.println("Se a posat la marxa N");
 		} 
-		if(this.marxaManual == MarxesManual_Jaume_Borras.R && comprovadorEstatMotor() ){ //si està marxa enrera posa la marxa neutre
+		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.R) && comprovadorEstatMotor() ){ //si està marxa enrera posa la marxa neutre
 			marxaManual = MarxesManual_Jaume_Borras.N;
 			System.out.println("Se a posat la marxa N");
 		}
@@ -192,11 +197,11 @@ public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 	}
 	
 	public void marxaEnrera() throws Exception {
-		if(this.marxaManual == MarxesManual_Jaume_Borras.R) { //si ja està en la marxa R llança la excepció
+		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.R)) { //si ja està en la marxa R llança la excepció
 			throw new Exception("Ja estàs en marxa enrera");
 		}
 		
-		if(this.marxaManual == MarxesManual_Jaume_Borras.N && comprovadorEstatMotor() ){ //si està en neutre i ences posa la marxa enrera
+		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.N) && comprovadorEstatMotor() ){ //si està en neutre i ences posa la marxa enrera
 			marxaManual = MarxesManual_Jaume_Borras.R;
 			System.out.println("Se a posat la marxa Enrera");
 		}
@@ -214,54 +219,70 @@ public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 	
 	/*Metodes de les marxes automatiques*/
 
-	public void canviMarchaAuto(char x) throws Exception { //canvia la marxa automatica
+	public void canviMarxaAuto(char masOmenos) throws Exception { //canvia la marxa automatica
 		
-		if(x != '+' && x != '-') { //si no es el char que correspon envia un error
+		if(masOmenos != '+' && masOmenos != '-') { //si no es el char que correspon envia un error
 			throw new Exception ("Selecona be la acció per favor");
 		}
 		
 		if( true != comprovadorEstatMotor()){ //si el motor no està ences no pots fer res
 			throw new Exception ("Si el motor no està ences no pots fer res");
 		}
-		if(marxaAuto == MarxesAuto_Jaume_Borras.R && x == '-') { //salten al sobrepasar el limit de baixada
+		if(marxaAuto.equals(MarxesAuto_Jaume_Borras.R) && masOmenos == '-') { //salten al sobrepasar el limit de baixada
 			throw new Exception ("No pots menys de R");
 		}
-		if(marxaAuto == MarxesAuto_Jaume_Borras.F && x == '+') { //salten al sobrepasar el limit de pujada
+		if(marxaAuto.equals(MarxesAuto_Jaume_Borras.F) && masOmenos == '+') { //salten al sobrepasar el limit de pujada
 			throw new Exception ("No pots més de F");
 		}
 		
 		/*Insertar metodes de pujada i baixada*/
 		
-		if(marxaAuto == MarxesAuto_Jaume_Borras.F && x == '-') { //coloca la marxa de F a N
-			marxaAuto = MarxesAuto_Jaume_Borras.N;
-			System.out.println("Se ha colocat la marxa Neutre");
-		}
+		subirRtoN(masOmenos);
 		
-		if(marxaAuto == MarxesAuto_Jaume_Borras.N && x == '-') { //coloca la marxa de N a R
-			marxaAuto = MarxesAuto_Jaume_Borras.R;
-			System.out.println("Se ha colocat la marxa Enrera");
+		bajarNtoR(masOmenos);
 		
-		}
+		subirNtoF(masOmenos);
 		
-		if(marxaAuto == MarxesAuto_Jaume_Borras.N && x == '+') { //coloca la marxa de N a F
-			marxaAuto = MarxesAuto_Jaume_Borras.F;
-			System.out.println("Se ha colocat la marxa F");
-		
-		}
-		
-		if(marxaAuto == MarxesAuto_Jaume_Borras.R && x == '+') { //coloca la marxa de R a N
-			marxaAuto = MarxesAuto_Jaume_Borras.N;
-			System.out.println("Se ha colocat la marxa N");
-		}
+		bajarFtoN(masOmenos);
 		
 	}
+	
+		public void subirRtoN(char masOmenos) {
+			if(marxaAuto.equals(MarxesAuto_Jaume_Borras.R) && masOmenos == '+') { //coloca la marxa de R a N
+				marxaAuto = MarxesAuto_Jaume_Borras.N;
+				System.out.println("Se ha colocat la marxa N");
+			}
+		}
+	
+		public void subirNtoF(char masOmenos) {
+			if(marxaAuto.equals(MarxesAuto_Jaume_Borras.N) && masOmenos == '+') { //coloca la marxa de N a F
+				marxaAuto = MarxesAuto_Jaume_Borras.F;
+				System.out.println("Se ha colocat la marxa F");
+			
+			}
+		}
+
+		public void bajarFtoN(char masOmenos) {
+			if(marxaAuto.equals(MarxesAuto_Jaume_Borras.F) && masOmenos == '-') { //coloca la marxa de F a N
+				marxaAuto = MarxesAuto_Jaume_Borras.N;
+				System.out.println("Se ha colocat la marxa N");
+			}
+		}
+	
+		public void bajarNtoR(char masOmenos) {
+			if(marxaAuto.equals(MarxesAuto_Jaume_Borras.N) && masOmenos == '-') { //coloca la marxa de N a R
+				marxaAuto = MarxesAuto_Jaume_Borras.R;
+				System.out.println("Se ha colocat la marxa Enrera");
+			
+			}
+		}
 
 
 	/*Metodes heredats*/
 	
 	@Override
 	public void aturarMotor() throws Exception { //cambia el estat del motor EnMarxa a Aturat
-		if(this.estat == EstatsMotorCotxe.EnMarxa) {
+		if(this.estat.equals(EstatsMotorCotxe.EnMarxa)) {
 			this.estat = EstatsMotorCotxe.Aturat;
 	        System.out.println("El cotxe se ha aturat i ara està "+EstatsMotorCotxe.Aturat+".");
 		}else {
@@ -275,16 +296,8 @@ public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 	
 	/*Metodes privats*/	
 
-	private MarxesManual_Jaume_Borras tornaManual() { //torna la posicio de la marxa neutral en manual
-		return this.marxaManual = MarxesManual_Jaume_Borras.N;
-	}
-
-	private MarxesAuto_Jaume_Borras tornaAuto() { //torna la posicio de la marxa neutral en automatic
-		return this.marxaAuto = MarxesAuto_Jaume_Borras.N;
-	}
-
 	private boolean comprovadorEstatMotor() { //comprova si el motor està ences
-		if(this.estat == EstatsMotorCotxe.Aturat){ //si està aturat evidentment no pot cambiar de marxa
+		if(this.estat.equals(EstatsMotorCotxe.Aturat)){ //si està aturat evidentment no pot cambiar de marxa
 			return false;
 		}else{  //si està ences si
 			return true;
@@ -292,12 +305,11 @@ public class CanviMarxa_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 	}
 
 	private boolean comprovadorEstatMarxaperN() { //comprova si es pot posar la marxa N
-		if(this.marxaManual == MarxesManual_Jaume_Borras.R && this.marxaManual == MarxesManual_Jaume_Borras.Primera){
+		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.R) && this.marxaManual.equals(MarxesManual_Jaume_Borras.Primera)){
 			return true; //si es primera o es cap enrera si que es pot posar la N
 		}else{
 			return false; //sino no
 		}
-		
 	}
 
 }

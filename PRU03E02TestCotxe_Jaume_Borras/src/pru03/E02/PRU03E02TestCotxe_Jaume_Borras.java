@@ -9,10 +9,11 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 		String marca = "Fiat";
 		String model = "500";
 		int selectorTipusMarxa;
-		char x;
-		int selectorMenu ; //mirar inicialitzar
+		char masOmenos;
+		int selectorMenuManual;
+		int selectorMenuAuto;
 		TipusCanvi tipusCanvi = TipusCanvi.CanviManual;
-		CanviMarxa_Jaume_Borras c1 = new CanviMarxa_Jaume_Borras(marca, model, tipusCanvi);
+		PRU03E03_Jaume_Borras c1 = new PRU03E03_Jaume_Borras(marca, model, tipusCanvi);
 		Scanner s = new Scanner(System.in);
 		
 		try {
@@ -53,35 +54,117 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 	    }													//(En teoria es incorrecte)
 		/*
 		
+		
+		
+		
 		*/
+		System.out.println(""); //com fer un enter en un doc
+		System.out.println("");
 
-		System.out.println("Benvingut el menu");
+		System.out.println("Benvingut el menu"); //inici de programa
 		System.out.println("Eligeix la marca del cotxe");
 		marca = s.next();
+		System.out.println("");
 		System.out.println("Eligeix el model del cotxe");
 		model = s.next();
+		System.out.println("");
 
 		do{
-		System.out.println("Eligeix el tipus de canvi del cotxe");
+		System.out.println("Eligeix el tipus de canvi del cotxe"); //selector de tipus de marxa
 		System.out.println("[1] Canvi manual");
 		System.out.println("[2] Canvi automatic");
 		selectorTipusMarxa = s.nextInt();
 		}while(selectorTipusMarxa != 1 && selectorTipusMarxa != 2);
 
-		if(selectorTipusMarxa == 1){
+		if(selectorTipusMarxa == 1){ //segons el numero defineix un o l'altre
 			tipusCanvi = TipusCanvi.CanviManual;
 		}else{
 			tipusCanvi = TipusCanvi.CanviAutomatic;
 		}
 
-		CanviMarxa_Jaume_Borras c2 = new CanviMarxa_Jaume_Borras(marca, model, tipusCanvi);
-
-		do{
+		PRU03E03_Jaume_Borras c2 = new PRU03E03_Jaume_Borras(marca, model, tipusCanvi);
+		
+		if(c2.getTipusMarcha().equals(TipusCanvi.CanviManual)) { //menu del cotxe manual
 			
-			Menu();
-			selectorMenu = s.nextInt();
+			do{
+				System.out.println("");
+				MenuManual();
+				selectorMenuManual = s.nextInt();
+				System.out.println("");
 
-			switch(selectorMenu){
+				switch(selectorMenuManual){
+					case 1: 
+							try {
+								c2.arrancarMotor(); //encen motor
+							}catch (Exception jaArrancat) {
+								System.out.println(jaArrancat.getMessage()); //llança la exepcio en cas de que no funcioni
+							} 
+							break;
+
+					case 2: 
+							try {
+								c2.aturarMotor(); //atura motor
+							}catch (Exception jaAturat) {
+								System.out.println(jaAturat.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
+							}
+							break;
+					
+					case 3:
+							System.out.println("El motor está: "+c2.comprovaMotor()); //comprova estat del motor
+							break;
+					
+					case 4:
+							System.out.println(c2.getRevolucions());//obtenim revelucions (en aquest cas 0)
+							break;
+
+					case 5:
+						
+						System.out.print("Vols pujar [+] o baixar [-] de marxa?");
+						masOmenos = s.next().charAt(0);
+						System.out.println("");
+							try {
+								c2.canviarMarxaManual(masOmenos); //puja la marxa del cotxe
+							}catch (Exception canviarMarxaN) {
+								System.out.println(canviarMarxaN.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
+							}
+							break;
+					
+					case 6:
+							try {
+								c2.marxaEnrera();
+							}catch (Exception enreraMarxaN) {
+								System.out.println(enreraMarxaN.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
+							}
+							break;
+				
+
+					case 7:
+							try {
+								c2.posarMarxaN();
+							}catch (Exception posarMarxaN) {
+								System.out.println(posarMarxaN.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
+							}
+							break;
+							
+					default: 
+							selectorMenuManual = 8;
+							break;
+					
+				}
+
+			}while(selectorMenuManual != 8);
+			
+			
+		}else { //menu del cotxe automatic
+			
+			do {
+				
+				System.out.println(" ");
+				MenuAutomatic();
+				selectorMenuAuto = s.nextInt();
+				System.out.println(" ");
+				
+				switch(selectorMenuAuto){
 				case 1: 
 						try {
 							c2.arrancarMotor(); //encen motor
@@ -107,47 +190,31 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 						break;
 
 				case 5:
-					
-					System.out.print("Vols pujar [+] o baixar [-] de marxa?");
-					x = s.next().charAt(0);
+						System.out.print("Vols pujar [+] o baixar [-] de marxa?");
+						masOmenos = s.next().charAt(0);
+						System.out.println("");
 						try {
-							c2.canviarMarxaManual(x); //puja la marxa del cotxe
+							c2.canviMarxaAuto(masOmenos);//puja la marxa del cotxe
 						}catch (Exception canviarMarxaN) {
 							System.out.println(canviarMarxaN.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
 						}
 						break;
-				
-				case 6:
-						try {
-							c2.marxaEnrera();
-						}catch (Exception enreraMarxaN) {
-							System.out.println(enreraMarxaN.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
-						}
-						break;
-			
-
-				case 7:
-						try {
-							c2.posarMarxaN();
-						}catch (Exception posarMarxaN) {
-							System.out.println(posarMarxaN.getMessage()); //llança una resposta a la exepcio en cas de que no funcioni
-						}
-						break;
-						
+					
 				default: 
-						selectorMenu = 8;
-						break;
+					selectorMenuAuto = 6;
+					break;
+				}
 				
-			}
-
-		}while(selectorMenu != 8);
+			}while(selectorMenuAuto != 6);
+			
+		}
 		
 		System.out.println("Heu sortit del programa");
 		
 		s.close();
 	}
 
-	private static void Menu() { // imprimeix menu
+	private static void MenuManual() { // imprimeix menu del manual
 		System.out.println("Que desitja fer amb el cotxe?");
 		System.out.println("[1] Arrancar	   [2] Aturar");
 		System.out.println("[3] Comprovar estat del motor");
@@ -155,6 +222,15 @@ public class PRU03E02TestCotxe_Jaume_Borras {
 		System.out.println("[5] Canviar marxa");
 		System.out.println("[6] Marxa enrera   [7] Marxa neutre");
 		System.out.println("[8] Sortir programa");
+	}
+	
+	private static void MenuAutomatic() {
+		System.out.println("Que desitja fer amb el cotxe?");
+		System.out.println("[1] Arrancar	   [2] Aturar");
+		System.out.println("[3] Comprovar estat del motor");
+		System.out.println("[4] Comprovar revolucions");
+		System.out.println("[5] Canvi de marxa");
+		System.out.println("[6] Sortir programa");
 	}
 
 }
