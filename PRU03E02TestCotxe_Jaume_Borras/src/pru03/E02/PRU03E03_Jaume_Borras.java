@@ -201,11 +201,6 @@ public class PRU03E03_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 			throw new Exception("Ja estàs en marxa enrera");
 		}
 		
-		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.N) && comprovadorEstatMotor() ){ //si està en neutre i ences posa la marxa enrera
-			marxaManual = MarxesManual_Jaume_Borras.R;
-			System.out.println("Se a posat la marxa Enrera");
-		}
-		
 		if(true != comprovadorEstatMotor()){ //si està apagat llança la excepció
 			throw new Exception("Encen el motor");
 		}
@@ -213,7 +208,10 @@ public class PRU03E03_Jaume_Borras extends PRU03E02Cotxe_Jaume_Borràs {
 			throw new Exception("Coloquet primer en la marxa Neutre");
 		}
 		
-		
+		if(this.marxaManual.equals(MarxesManual_Jaume_Borras.N) && comprovadorEstatMotor() ){ //si està en neutre i ences posa la marxa enrera
+			marxaManual = MarxesManual_Jaume_Borras.R;
+			System.out.println("Se a posat la marxa Enrera");
+		}
 
 	}
 	
